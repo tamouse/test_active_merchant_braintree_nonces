@@ -1,0 +1,28 @@
+# Get values from your sandbox account at braintreepayments.com
+sandbox: &sandbox
+  environment: sandbox
+  merchant_id: ""
+  public_key: ""
+  private_key: ""
+  client_key: ""
+
+development:
+  <<: *sandbox
+
+test:
+  <<: *sandbox
+
+qa:
+  <<: *sandbox
+
+staging:
+  <<: *sandbox
+
+# Get values from your production account at braintreepayments.com and
+# inject them from the environment. Do not store in repository.
+production:
+  environment: production
+  merchant_id: "<%= ENV['BRAINTREE_MERCHANT_ID'] %>"
+  public_key: "<%= ENV['BRAINTREE_PUBLIC_KEY'] %>"
+  private_key: "<%= ENV['BRAINTREE_PRIVATE_KEY'] %>"
+  client_key: "<%= ENV['BRAINTREE_CLIENT_KEY'] %>"
