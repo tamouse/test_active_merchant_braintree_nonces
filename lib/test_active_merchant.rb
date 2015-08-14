@@ -1,5 +1,11 @@
 require "test_active_merchant/version"
+require "test_active_merchant/braintree_initialize"
+require "activemerchant"
 
 module TestActiveMerchant
-  # Your code goes here...
+  def self.authorize_payment(amt, pm)
+    btconfig = BraintreeInitialize.new.configuration
+    gw = ActiveMerchant::Billing::BraintreeGateway.new(btconfig)
+    gw.authorize(amt, pm)
+  end
 end
